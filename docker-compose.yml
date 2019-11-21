@@ -1,0 +1,15 @@
+version: '3'
+services:
+  apache2:
+    build: .
+    hostname: www.clousam.com
+    volumes:
+      - ./etcletsencrypt:/etc/letsencrypt
+      - ./varletsencrypt:/var/lib/letsencrypt
+      - ./www/seniortravelbuddy:/var/www/html/seniortravelbuddy
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      LETS_ENCRYPT_EMAIL: "verenzuela@gmail.com"
+      LETS_ENCRYPT_DOMAINS: "www.clousam.com"
