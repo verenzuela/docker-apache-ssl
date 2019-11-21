@@ -2,7 +2,7 @@ version: '3'
 services:
   apache2:
     build: .
-    hostname: www.clousam.com
+    hostname: ${env:HOSTNAME}
     volumes:
       - ./etcletsencrypt:/etc/letsencrypt
       - ./varletsencrypt:/var/lib/letsencrypt
@@ -11,5 +11,5 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      LETS_ENCRYPT_EMAIL: "verenzuela@gmail.com"
-      LETS_ENCRYPT_DOMAINS: "www.clousam.com,clousam.com"
+      LETS_ENCRYPT_EMAIL: ${env:EMAIL}
+      LETS_ENCRYPT_DOMAINS: ${env:DOMAINS}
