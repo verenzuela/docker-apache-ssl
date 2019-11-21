@@ -12,4 +12,4 @@ services:
       - "443:443"
     environment:
       LETS_ENCRYPT_EMAIL: "verenzuela@gmail.com"
-      LETS_ENCRYPT_DOMAINS: "www.clousam.com"
+      LETS_ENCRYPT_DOMAINS: "www.clousam.com,clousam.com"
