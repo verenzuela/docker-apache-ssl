@@ -2,9 +2,6 @@ FROM enoniccloud/apache2:u19.04
 
 COPY 0-default.conf /etc/apache2/sites-enabled/0-default.conf
 
-LABEL creator="Erik Kaareng-Sunde <https://github.com/drerik>"
-LABEL maintainer="Diego Pasten <https://github.com/diegopasten>"
-
 ENV TZ=Europe/Oslo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
