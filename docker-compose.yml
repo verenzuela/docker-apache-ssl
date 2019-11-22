@@ -13,10 +13,10 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      LETS_ENCRYPT_EMAIL: "verenzuela@gmail.com"
-      LETS_ENCRYPT_DOMAINS: "www.clousam.com"
       - "DB_PORT=3306"
       - "DB_HOST=database"
+      - "LETS_ENCRYPT_EMAIL=verenzuela@gmail.com"
+      - "LETS_ENCRYPT_DOMAINS=www.clousam.com"
   # The Database
   database:
     image: mysql:5.6
