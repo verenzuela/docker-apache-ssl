@@ -13,3 +13,38 @@ services:
     environment:
       LETS_ENCRYPT_EMAIL: verenzuela@gmail.com
       LETS_ENCRYPT_DOMAINS: www.clousam.com
+
+version: '2'
+services:
+  # The Application
+  app:
+    build: .
+    working_dir: /var/www/html
+    hostname: www.clousam.com
+    volumes:
+      - ./etcletsencrypt:/etc/letsencrypt
+      - ./varletsencrypt:/var/lib/letsencrypt
+      - ./www/seniortravelbuddy:/var/www/html/seniortravelbuddy
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      LETS_ENCRYPT_EMAIL: verenzuela@gmail.com
+      LETS_ENCRYPT_DOMAINS: www.clousam.com
+      - "DB_PORT=3306"
+      - "DB_HOST=database"
+      - VIRTUAL_HOST=local.seniortravelbuddy.com
+      
+  # The Database
+  database:
+    image: mysql:5.6
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./dump_db/:/opt/dump_db
+    environment:
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_DATABASE=dating"
+      - "MYSQL_USER=root"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+        - "3306:3306"
